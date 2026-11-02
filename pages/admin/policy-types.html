@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Meta Information -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Policy Types | Insurance</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../../css/policy-types.css">
+  <link rel="stylesheet" href="../../css/common.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar">
+
+    <!-- Logo -->
+    <a class="nav-logo" href="dashboard.html">
+      <div class="nav-logo-icon">IN</div>
+      <span class="nav-logo-text">In<span>Surance</span></span>
+    </a>
+
+    <!-- Navigation Links -->
+    <div class="nav-links">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="customers.html">Customers</a>
+      <a href="agents.html">Agents</a>
+      <a href="policy-types.html" class="active">Policy Types</a>
+      <a href="policies.html">Policies</a>
+      <a href="payments.html">Payments</a>
+      <a href="claims.html">Claims</a>
+    </div>
+
+    <!-- User Info + Logout -->
+    <div class="nav-right">
+      <button id="themeToggle" class="btn-theme-toggle" aria-label="Toggle Dark/Light Theme">Light</button>
+      <div class="nav-user">
+        <div class="nav-avatar">AD</div>
+        <span>Admin</span>
+      </div>
+      <button onclick="logout()" class="btn-logout">Logout</button>
+    </div>
+
+  </nav>
+
+  <!-- ================= MAIN PAGE ================= -->
+  <div class="page">
+
+    <!-- Page Header -->
+    <div class="page-header">
+      <div class="page-header-left">
+        <h1>Policy Types</h1>
+        <p>Manage insurance product categories</p>
+      </div>
+
+      <!-- Add Policy Type Button -->
+      <button class="btn btn-primary" onclick="openAdd()">+ Add Type</button>
+    </div>
+
+    <!-- ================= TABLE CARD ================= -->
+    <div class="card">
+
+      <!-- Table Wrapper -->
+      <div class="table-wrap">
+        <table>
+
+          <!-- Table Head -->
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Type Name</th>
+              <th>Description</th>
+              <th>Base Rate</th>
+              <th>Risk Factor</th>
+              <th>Linked Policies</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <!-- Dynamic Table Body -->
+          <tbody id="tbody"></tbody>
+
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ================= MODAL (ADD / EDIT TYPE) ================= -->
+  <div class="overlay" id="modal">
+    <div class="modal">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h3 id="modal-title">Add Policy Type</h3>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body">
+
+        <!-- Hidden Field (used during edit) -->
+        <input type="hidden" id="edit-id">
+
+        <!-- Type Name Input -->
+        <div class="field">
+          <label>Type Name *</label>
+          <input type="text" id="f-name" placeholder="e.g. Life Insurance">
+        </div>
+
+        <!-- Description Input -->
+        <div class="field">
+          <label>Description</label>
+          <textarea id="f-desc" placeholder="Short description..."></textarea>
+        </div>
+
+        <!-- Base Rate Input -->
+        <div class="field">
+          <label>Base Rate (&#x20B9; per &#x20B9;1000 sum assured / year)</label>
+          <input type="number" step="0.01" id="f-base-rate" placeholder="1.00" min="0">
+        </div>
+
+        <!-- Risk Factor Input -->
+        <div class="field">
+          <label>Risk Factor (multiplier)</label>
+          <input type="number" step="0.01" id="f-risk-factor" placeholder="1.00" min="0">
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+        <button class="btn btn-gray" onclick="closeModal('modal')">Cancel</button>
+        <button class="btn btn-primary" onclick="saveType(this)">Save Type</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast"></div>
+
+  <!-- Scripts -->
+  <script src="../../js/common.js"></script>
+  <script src="../../js/admin/policy-types.js"></script>
+
+</body>
+</html>

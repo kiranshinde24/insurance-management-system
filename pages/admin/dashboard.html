@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Insurance</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../../css/dashboard.css">
+  <link rel="stylesheet" href="../../css/common.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!--  NAVBAR  -->
+  <nav class="navbar">
+
+    <!-- Logo -->
+    <a class="nav-logo" href="#">
+      <div class="nav-logo-icon">IN</div>
+      <span class="nav-logo-text">In<span>Surance</span></span>
+    </a>
+
+    <!-- Navigation Links -->
+    <div class="nav-links">
+      <a href="dashboard.html" class="active">Dashboard</a>
+      <a href="customers.html">Customers</a>
+      <a href="agents.html">Agents</a>
+      <a href="policy-types.html">Policy Types</a>
+      <a href="policies.html">Policies</a>
+      <a href="payments.html">Payments</a>
+      <a href="claims.html">Claims</a>
+    </div>
+
+    <!-- User Info + Logout -->
+    <div class="nav-right">
+      <button id="themeToggle" class="btn-theme-toggle" aria-label="Toggle Dark/Light Theme">Dark</button>
+      <div class="nav-user">
+        <div class="nav-avatar">AD</div>
+        <span>Admin</span>
+      </div>
+      <button onclick="logout()" class="btn-logout">Logout</button>
+    </div>
+
+  </nav>
+
+  <!-- MAIN PAGE  -->
+  <div class="page">
+
+    <!--  BANNER  -->
+    <div class="banner">
+
+      <!-- Welcome Text -->
+      <div class="banner-text">
+        <h2>Welcome to Insurance</h2>
+        <p>Your complete insurance management portal — all in one place</p>
+        <button class="btn btn-primary" style="margin-top:12px" onclick="runExpiryCheck()">Run Expiry Check Now</button>
+      </div>
+
+      <!-- Banner Stats -->
+      <div class="banner-stats">
+
+        <!-- Active Policies -->
+        <div class="bstat">
+          <div class="bval" id="activePolicies">0</div>
+          <div class="blbl">Active Policies</div>
+        </div>
+
+        <!-- Total Collection -->
+        <div class="bstat">
+          <div class="bval" id="totalCollection">₹0</div>
+          <div class="blbl">Total Collected</div>
+        </div>
+
+        <!-- Pending Claims -->
+        <div class="bstat">
+          <div class="bval" id="pendingClaims">0</div>
+          <div class="blbl">Pending Claims</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- STAT CARDS -->
+    <div class="stat-row">
+
+      <div class="stat-card">
+        <h3 id="totalCustomers">0</h3>
+        <p>Total Customers</p>
+      </div>
+
+      <div class="stat-card">
+        <h3 id="totalPolicies">0</h3>
+        <p>Total Policies</p>
+      </div>
+
+      <div class="stat-card">
+        <h3 id="totalCollectedCard">₹0</h3>
+        <p>Total Collected</p>
+      </div>
+
+      <div class="stat-card">
+        <h3 id="totalClaims">0</h3>
+        <p>Total Claims</p>
+      </div>
+
+      <div class="stat-card">
+        <h3 id="totalAgents">0</h3>
+        <p>Total Agents</p>
+      </div>
+
+    </div>
+
+    <!-- CHARTS -->
+    <div class="charts-row">
+
+      <div class="card chart-card">
+        <div class="card-header">
+          <h3>Policies Sold</h3>
+          <span class="chart-sub">Last 6 months</span>
+        </div>
+        <div class="chart-body">
+          <canvas id="policiesSoldChart"></canvas>
+        </div>
+      </div>
+
+      <div class="card chart-card">
+        <div class="card-header">
+          <h3>Claims Trend</h3>
+          <span class="chart-sub">Last 6 months</span>
+        </div>
+        <div class="chart-body">
+          <canvas id="claimsTrendChart"></canvas>
+        </div>
+      </div>
+
+      <div class="card chart-card chart-card-wide">
+        <div class="card-header">
+          <h3>Revenue</h3>
+          <span class="chart-sub">Last 6 months</span>
+        </div>
+        <div class="chart-body">
+          <canvas id="revenueChart"></canvas>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RECENT POLICIES -->
+    <div class="card">
+
+      <!-- Card Header -->
+      <div class="card-header">
+        <h3>Recent Policies</h3>
+      </div>
+
+      <!-- Table -->
+      <div class="table-wrap">
+        <table>
+
+          <thead>
+            <tr>
+              <th>Policy No</th>
+              <th>Customer</th>
+              <th>Premium</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+
+          <!-- Dynamic Data -->
+          <tbody id="recentPolicies"></tbody>
+
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="../../js/vendor/chart.umd.js"></script>
+  <script src="../../js/common.js"></script>
+  <script src="../../js/admin/dashboard.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,407 @@
+/* Main page layout */
+.page {
+  margin-top: 64px; /* Space for fixed navbar */
+  padding: 28px 32px; /* Inner spacing */
+  min-height: calc(100vh - 64px); /* Full screen height minus navbar */
+}
+
+
+/* Page header (title + button row) */
+.page-header {
+  display: flex; /* Horizontal layout */
+  align-items: center; /* Vertical center */
+  justify-content: space-between; /* Space between title & button */
+  margin-bottom: 24px; /* Space below header */
+}
+
+
+/* Page title */
+.page-header-left h1 {
+  font-size: 22px;
+  font-weight: 800; /* Bold */
+  color: #0f172a;
+}
+
+
+/* Page subtitle */
+.page-header-left p {
+  font-size: 13px;
+  color: #94a3b8; /* Light gray */
+  margin-top: 3px;
+}
+
+
+/* Summary cards container (like dashboard stats) */
+.summary-row {
+  display: flex; /* Row layout */
+  gap: 14px; /* Space between cards */
+  flex-wrap: wrap; /* Wrap on small screens */
+  margin-bottom: 22px;
+}
+
+
+/* Individual summary box */
+.sum-box {
+  background: white;
+  border-radius: 12px;
+  padding: 16px 22px;
+  border: 1px solid #e2e8f0;
+  min-width: 150px;
+  flex: 1; /* Equal width */
+}
+
+
+/* Summary number */
+.sum-box h3 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+
+/* Summary label */
+.sum-box p {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+
+/* Filter bar (search / dropdown area) */
+.bar {
+  display: flex;
+  gap: 10px;
+  padding: 14px 22px;
+  background: #fafafa;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+
+/* Dropdown inside filter bar */
+.bar select {
+  padding: 8px 12px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 13px;
+  background: white;
+}
+
+
+/* Focus effect on dropdown */
+.bar select:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+}
+
+
+/* Card container (used for tables) */
+.card {
+  background: white;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 20px;
+  overflow: hidden; /* Prevent overflow */
+}
+
+
+/* Table wrapper for horizontal scroll */
+.table-wrap {
+  overflow-x: auto;
+}
+
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse; /* Remove spacing between cells */
+}
+
+
+/* Table headers */
+th {
+  background: #f8fafc;
+  padding: 11px 16px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #044fb8;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: left;
+}
+
+
+/* Table cells */
+td {
+  padding: 14px 16px;
+  font-size: 13px;
+  color: #475569;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+
+/* Hover effect on rows */
+tbody tr:hover td {
+  background: #f8faff;
+}
+
+
+/* Common button style */
+.btn {
+  padding: 9px 18px;
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+
+/* Primary button */
+.btn-primary {
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  color: white;
+}
+
+
+/* Secondary gray button */
+.btn-gray {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+
+/* Small button */
+.btn-sm {
+  padding: 5px 12px;
+  font-size: 12px;
+}
+
+
+/* Edit button */
+.btn-edit {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+
+/* Delete button */
+.btn-del {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+
+/* Status badge (pill shape) */
+.badge {
+  padding: 4px 11px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+
+/* Badge colors */
+.b-green { background: #dcfce7; color: #15803d; }
+.b-red   { background: #fee2e2; color: #dc2626; }
+.b-amber { background: #fef9c3; color: #a16207; }
+
+
+/* Modal overlay (background blur/dark) */
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0; /* Full screen */
+  background: rgba(15,23,42,0.6);
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Show modal */
+.overlay.show {
+  display: flex;
+}
+
+
+/* Modal box */
+.modal {
+  background: white;
+  border-radius: 16px;
+  width: 540px;
+  max-width: 95%;
+  padding: 20px;
+}
+
+
+/* Modal title */
+.modal-header h3 {
+  font-size: 17px;
+  font-weight: 800;
+}
+
+
+/* Modal footer buttons */
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+
+/* Form layout (2 columns) */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+
+/* Form field */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+
+/* Label */
+.field label {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+
+/* Inputs & dropdowns */
+.field input,
+.field select {
+  padding: 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+
+/* Toast notification */
+#toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  color: white;
+  display: none; /* hidden by default */
+}
+/* ===== CLAIM DETAIL MODAL LAYOUT ===== */
+
+/* Wide horizontal modal */
+.claim-detail-modal {
+  max-width: 860px;
+  width: 96%;
+}
+
+/* Two column layout inside modal body */
+.claim-modal-body {
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+  max-height: 72vh;
+  overflow-y: auto;
+}
+
+/* Left column takes more space */
+.claim-modal-left {
+  flex: 1.2;
+  min-width: 0;
+}
+
+/* Right column fixed width */
+.claim-modal-right {
+  flex: 0.8;
+  min-width: 220px;
+  border-left: 1px solid #e2e8f0;
+  padding-left: 24px;
+}
+
+/* Section titles inside modal */
+.detail-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 10px;
+}
+
+/* 2-col grid for detail boxes */
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* Individual detail box */
+.detail-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 10px 13px;
+}
+
+.detail-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.detail-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* Responsive: stack on small screens */
+@media (max-width: 640px) {
+  .claim-modal-body {
+    flex-direction: column;
+  }
+  .claim-modal-right {
+    border-left: none;
+    border-top: 1px solid #e2e8f0;
+    padding-left: 0;
+    padding-top: 20px;
+  }
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Dark mode */
+body.dark .claim-modal-right {
+  border-color: #334155;
+}
+
+body.dark .detail-box {
+  background: #0f172a;
+  border-color: #334155;
+}
+
+body.dark .detail-value {
+  color: #f1f5f9;
+}
+
+body.dark #d-description {
+  color: #cbd5e1 !important;
+}
+
+body.dark #d-completed-msg {
+  background: rgba(22,163,74,0.12) !important;
+  border-color: rgba(22,163,74,0.35) !important;
+  color: #4ade80 !important;
+}
+
+body.dark #d-no-doc {
+  color: #64748b !important;
+}

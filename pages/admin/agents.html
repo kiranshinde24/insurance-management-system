@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Meta Information -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agents | Insurance</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../../css/agents.css">
+  <link rel="stylesheet" href="../../css/common.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+
+    <!-- Logo -->
+    <a class="nav-logo" href="dashboard.html">
+      <div class="nav-logo-icon">IN</div>
+      <span class="nav-logo-text">In<span>Surance</span></span>
+    </a>
+
+    <!-- Navigation Links -->
+    <div class="nav-links">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="customers.html">Customers</a>
+      <a href="agents.html" class="active">Agents</a>
+      <a href="policy-types.html">Policy Types</a>
+      <a href="policies.html">Policies</a>
+      <a href="payments.html">Payments</a>
+      <a href="claims.html">Claims</a>
+    </div>
+
+    <!-- User Info and Logout -->
+    <div class="nav-right">
+      <button id="themeToggle" class="btn-theme-toggle" aria-label="Toggle Dark/Light Theme">Light</button>
+      <div class="nav-user">
+        <div class="nav-avatar">AD</div>
+        <span>Admin</span>
+      </div>
+      <button onclick="logout()" class="btn-logout">Logout</button>
+    </div>
+
+  </nav>
+
+  <!-- Main Page -->
+  <div class="page">
+
+    <!-- Page Header -->
+    <div class="page-header">
+      <div class="page-header-left">
+        <h1>Agents</h1>
+        <p>Manage field agents and commission rates</p>
+      </div>
+      <button class="btn btn-primary" onclick="openAdd()">+ Add Agent</button>
+    </div>
+
+    <!-- Agents Table Card -->
+    <div class="card">
+
+      <!-- Table Section -->
+      <div class="table-wrap">
+        <table>
+
+          <!-- Table Head -->
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Agent Name</th>
+              <th>Username</th>
+              <th>Phone</th>
+              <th>Email</th>
+              <th>Commission %</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <!-- Dynamic Table Body -->
+          <tbody id="tbody"></tbody>
+
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Modal for Add/Edit Agent -->
+  <div class="overlay" id="modal">
+    <div class="modal">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h3 id="modal-title">Add Agent</h3>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body">
+
+        <!-- Hidden ID for edit -->
+        <input type="hidden" id="edit-id">
+
+        <div class="form-row">
+
+          <!-- Agent Name -->
+          <div class="field">
+            <label>Agent Name *</label>
+            <input type="text" id="f-name" placeholder="Full name">
+          </div>
+
+          <!-- Username -->
+          <div class="field">
+            <label>Username *</label>
+            <input type="text" id="f-username" placeholder="agent.username@example.com">
+          </div>
+
+          <!-- Password -->
+          <div class="field">
+            <label>Password *</label>
+            <input type="password" id="f-password" placeholder="Set login password">
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="field">
+            <label>Confirm Password *</label>
+            <input type="password" id="f-confirm-password" placeholder="Confirm password">
+          </div>
+
+          <!-- Commission -->
+          <div class="field">
+            <label>Commission % *</label>
+            <input type="number" id="f-comm" placeholder="5.00" step="0.01">
+          </div>
+
+          <!-- Phone -->
+          <div class="field">
+            <label>Phone</label>
+            <input type="text" id="f-phone" placeholder="9876543210">
+          </div>
+
+          <!-- Email -->
+          <div class="field">
+            <label>Email</label>
+            <input type="email" id="f-email" placeholder="email@example.com">
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+        <button class="btn btn-gray" onclick="closeModal('modal')">Cancel</button>
+        <button class="btn btn-primary" onclick="saveAgent(this)">Save Agent</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast"></div>
+
+  <!-- Scripts -->
+  <script src="../../js/common.js"></script>
+  <script src="../../js/admin/agents.js"></script>
+
+</body>
+</html>

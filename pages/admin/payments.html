@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payments | Insurance</title>
+
+  <link rel="stylesheet" href="../../css/payments.css">
+  <link rel="stylesheet" href="../../css/common.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+
+    <a class="nav-logo" href="dashboard.html">
+      <div class="nav-logo-icon">IN</div>
+      <span class="nav-logo-text">In<span>Surance</span></span>
+    </a>
+
+    <div class="nav-links">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="customers.html">Customers</a>
+      <a href="agents.html">Agents</a>
+      <a href="policy-types.html">Policy Types</a>
+      <a href="policies.html">Policies</a>
+      <a href="payments.html" class="active">Payments</a>
+      <a href="claims.html">Claims</a>
+    </div>
+
+    <div class="nav-right">
+      <button id="themeToggle" class="btn-theme-toggle" aria-label="Toggle Dark/Light Theme">Light</button>
+      <div class="nav-user">
+        <div class="nav-avatar">AD</div>
+        <span>Admin</span>
+      </div>
+      <button onclick="logout()" class="btn-logout">Logout</button>
+    </div>
+
+  </nav>
+
+  <!-- MAIN -->
+  <div class="page">
+
+    <div class="page-header">
+      <div class="page-header-left">
+        <h1>Payments</h1>
+        <p>Track all premium collections</p>
+      </div>
+      <button class="btn btn-primary" onclick="openAdd()">+ Record Payment</button>
+    </div>
+
+    <!-- Summary -->
+    <div class="summary-row" id="summary-row"></div>
+
+    <!-- TABLE -->
+    <div class="card">
+
+      <!-- Filter -->
+      <div class="bar">
+        <select id="filter-mode" onchange="loadTable()">
+          <option value="">All Modes</option>
+          <option>Online</option>
+          <option>Cheque</option>
+          <option>Cash</option>
+          <option>NEFT</option>
+          <option>UPI</option>
+        </select>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Date</th>
+              <th>Policy No</th>
+              <th>Customer</th>
+              <th>Amount</th>
+              <th>Mode</th>
+              <th>Receipt</th>
+            </tr>
+          </thead>
+
+          <tbody id="tbody"></tbody>
+
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- MODAL (still used for adding payment) -->
+  <div class="overlay" id="modal">
+    <div class="modal">
+
+      <div class="modal-header">
+        <h3>Record Payment</h3>
+      </div>
+
+      <div class="modal-body">
+
+        <div class="form-row">
+
+          <div class="field">
+            <label>Policy *</label>
+            <select id="f-policy"></select>
+          </div>
+
+          <div class="field">
+            <label>Date *</label>
+            <input type="date" id="f-date">
+          </div>
+
+          <div class="field">
+            <label>Amount (₹) *</label>
+            <input type="number" id="f-amount" min="0">
+          </div>
+
+          <div class="field">
+            <label>Mode</label>
+            <select id="f-mode">
+              <option>Online</option>
+              <option>Cheque</option>
+              <option>Cash</option>
+              <option>NEFT</option>
+              <option>UPI</option>
+            </select>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-gray" onclick="closeModal('modal')">Cancel</button>
+        <button class="btn btn-primary" onclick="savePayment(this)">Save Payment</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="toast"></div>
+
+  <script src="../../js/common.js"></script>
+  <script src="../../js/admin/payments.js"></script>
+
+</body>
+</html>

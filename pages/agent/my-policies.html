@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Policies | Agent Panel</title>
+
+  <link rel="stylesheet" href="../../css/dashboard.css">
+  <link rel="stylesheet" href="../../css/common.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <a class="nav-logo" href="dashboard.html">
+      <div class="nav-logo-icon">IN</div>
+      <span class="nav-logo-text">In<span>Surance</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="customers.html">Customers</a>
+      <a href="create-policy.html">Create Policy</a>
+      <a href="my-policies.html" class="active">My Policies</a>
+      <a href="commission.html">Commission</a>
+    </div>
+    <div class="nav-right">
+      <button id="themeToggle" class="btn-theme-toggle" aria-label="Toggle Dark/Light Theme">Light</button>
+      <div class="nav-user">
+        <div class="nav-avatar" id="nav-avatar">AG</div>
+        <span id="nav-username">Agent</span>
+      </div>
+      <button class="btn-logout" onclick="logout()">Logout</button>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div class="page-header">
+      <div>
+        <h1>My Policies</h1>
+        <p>Policies you have created or are responsible for.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Policy No</th>
+              <th>Customer</th>
+              <th>Premium</th>
+              <th>Type</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../js/common.js"></script>
+  <script src="../../js/agent/agent-policies.js"></script>
+</body>
+</html>

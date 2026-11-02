@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Claims | Insurance</title>
+
+  <link rel="stylesheet" href="../../css/dashboard.css">
+  <link rel="stylesheet" href="../../css/common.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <a class="nav-logo" href="dashboard.html">
+      <div class="nav-logo-icon">IN</div>
+      <span class="nav-logo-text">In<span>Surance</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="my-policies.html">My Policies</a>
+      <a href="my-payments.html">My Payments</a>
+      <a href="my-claims.html" class="active">My Claims</a>
+      <a href="profile.html">Profile</a>
+    </div>
+    <div class="nav-right">
+      <button id="themeToggle" class="btn-theme-toggle" aria-label="Toggle Dark/Light Theme">Light</button>
+      <div class="nav-user">
+        <div class="nav-avatar" id="nav-avatar">CU</div>
+        <span id="nav-username">Customer</span>
+      </div>
+      <button class="btn-logout" onclick="logout()">Logout</button>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div class="page-header">
+      <div>
+        <h1>My Claims</h1>
+        <p>Raise new claim requests and track existing claim status.</p>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <h3>Raise a Claim</h3>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Policy</label>
+          <select id="claim-policy"></select>
+        </div>
+        <div class="form-group">
+          <label>Claim Amount</label>
+          <input type="number" id="claim-amount" placeholder="Amount requested">
+        </div>
+        <div class="form-group">
+          <label>Date</label>
+          <input type="date" id="claim-date">
+        </div>
+
+        <!-- NEW: File upload field -->
+        <div class="form-group">
+          <label>Supporting Document (PDF or Image)</label>
+          <input type="file" id="claim-file" accept=".pdf,image/*">
+        </div>
+
+        <div class="form-group" style="grid-column: span 2;">
+          <label>Claim Description</label>
+          <textarea id="claim-description" placeholder="Describe why you are filing this claim"></textarea>
+        </div>
+      </div>
+      <button class="btn btn-primary" onclick="raiseClaim(this)">Submit Claim</button>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>Claim Requests</h3>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Policy</th>
+              <th>Agent</th>
+              <th>Requested</th>
+              <th>Approved</th>
+              <th>Description</th>
+              <th>Status</th>
+              <th>Document</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../js/common.js"></script>
+  <script src="../../js/customer/customer-claims.js"></script>
+</body>
+</html>

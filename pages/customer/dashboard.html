@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Dashboard | Insurance</title>
+
+  <link rel="stylesheet" href="../../css/dashboard.css">
+  <link rel="stylesheet" href="../../css/common.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <a class="nav-logo" href="dashboard.html">
+      <div class="nav-logo-icon">IN</div>
+      <span class="nav-logo-text">In<span>Surance</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="dashboard.html" class="active">Dashboard</a>
+      <a href="my-policies.html">My Policies</a>
+      <a href="my-payments.html">My Payments</a>
+      <a href="my-claims.html">My Claims</a>
+      <a href="profile.html">Profile</a>
+    </div>
+    <div class="nav-right">
+      <button id="themeToggle" class="btn-theme-toggle" aria-label="Toggle Dark/Light Theme">Light</button>
+      <div class="nav-user">
+        <div class="nav-avatar" id="nav-avatar">CU</div>
+        <span id="nav-username">Customer</span>
+      </div>
+      <button class="btn-logout" onclick="logout()">Logout</button>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div class="banner">
+      <div class="banner-text">
+        <h2>Welcome back, <span id="welcome-name">Customer</span></h2>
+        <p>Manage your policies, payments, and claim requests from one place.</p>
+      </div>
+      <div class="banner-stats">
+        <div class="bstat">
+          <div class="bval" id="totalPolicies">0</div>
+          <div class="blbl">My Policies</div>
+        </div>
+        <div class="bstat">
+          <div class="bval" id="totalPayments">₹0</div>
+          <div class="blbl">Total Paid</div>
+        </div>
+        <div class="bstat">
+          <div class="bval" id="pendingClaims">0</div>
+          <div class="blbl">Pending Claims</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-card">
+        <h3 id="activePolicies">0</h3>
+        <p>Active Policies</p>
+      </div>
+      <div class="stat-card">
+        <h3 id="pastClaims">0</h3>
+        <p>Total Claims</p>
+      </div>
+      <div class="stat-card">
+        <h3 id="lastPayment">-</h3>
+        <p>Recent Payment</p>
+      </div>
+      <div class="stat-card">
+        <h3 id="agentCount">0</h3>
+        <p>Assigned Agents</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>Recent Policies</h3>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Policy No</th>
+              <th>Type</th>
+              <th>Premium</th>
+              <th>Agent Name</th>
+              <th>Agent Phone</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="recentPolicies"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../js/common.js"></script>
+  <script src="../../js/customer/customer-dashboard.js"></script>
+</body>
+</html>

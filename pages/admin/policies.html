@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Meta Information -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Policies | Insurance</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../../css/policies.css">
+  <link rel="stylesheet" href="../../css/common.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR  -->
+  <nav class="navbar">
+
+    <!-- Logo -->
+    <a class="nav-logo" href="dashboard.html">
+      <div class="nav-logo-icon">In</div>
+      <span class="nav-logo-text">In<span>Surance</span></span>
+    </a>
+
+    <!-- Navigation Links -->
+    <div class="nav-links">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="customers.html">Customers</a>
+      <a href="agents.html">Agents</a>
+      <a href="policy-types.html">Policy Types</a>
+      <a href="policies.html" class="active">Policies</a>
+      <a href="payments.html">Payments</a>
+      <a href="claims.html">Claims</a>
+    </div>
+
+    <!-- User Info + Logout -->
+    <div class="nav-right">
+      <button id="themeToggle" class="btn-theme-toggle" aria-label="Toggle Dark/Light Theme">Light</button>
+      <div class="nav-user">
+        <div class="nav-avatar">AD</div>
+        <span>Admin</span>
+      </div>
+      <button onclick="logout()" class="btn-logout">Logout</button>
+    </div>
+
+  </nav>
+
+  <!--  MAIN PAGE -->
+  <div class="page">
+
+    <!-- Page Header -->
+    <div class="page-header">
+      <div class="page-header-left">
+        <h1>Policies</h1>
+        <p>View and manage all insurance policy records</p>
+      </div>
+      <button class="btn btn-primary" onclick="openAdd()">+ New Policy</button>
+    </div>
+
+    <!-- POLICY TABLE CARD  -->
+    <div class="card">
+
+      <!-- Filters Section -->
+      <div class="bar">
+        <!-- Search Input -->
+        <input 
+          type="text" 
+          id="search" 
+          placeholder="Search policy no. or customer..." 
+          oninput="currentPage = 0; loadTable()"
+        >
+
+        <!-- Status Filter -->
+        <select id="filter-status" onchange="currentPage = 0; loadTable()">
+          <option value="">All Status</option>
+          <option>Active</option>
+          <option>Expired</option>
+        </select>
+      </div>
+
+      <!-- Table Section -->
+      <div class="table-wrap">
+        <table>
+
+          <!-- Table Head -->
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Policy No</th>
+              <th>Customer</th>
+              <th>Type</th>
+              <th>Agent</th>
+              <th>Start</th>
+              <th>End</th>
+              <th>Premium</th>
+              <th>Status</th>
+              <th>Action</th>
+              <th>Certificate</th>
+            </tr>
+          </thead>
+
+          <!-- Dynamic Table Body -->
+          <tbody id="tbody"></tbody>
+
+        </table>
+      </div>
+
+      <!-- Pagination -->
+      <div class="bar" style="justify-content:flex-end;align-items:center;gap:10px">
+        <span id="page-info" style="font-size:13px;color:#64748b"></span>
+        <button class="btn btn-sm btn-gray" id="prev-page" onclick="changePage(-1)">‹ Prev</button>
+        <button class="btn btn-sm btn-gray" id="next-page" onclick="changePage(1)">Next ›</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODAL (ADD / EDIT POLICY)  -->
+  <div class="overlay" id="modal">
+    <div class="modal">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h3 id="modal-title">New Policy</h3>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body">
+
+        <!-- Hidden Field for Edit -->
+        <input type="hidden" id="edit-id">
+
+        <div class="form-row">
+
+          <!-- Policy Number -->
+          <div class="field">
+            <label>Policy Number *</label>
+            <input type="text" id="f-polno" placeholder="POL-2024-001">
+          </div>
+
+          <!-- Start Date -->
+          <div class="field">
+            <label>Start Date</label>
+            <input type="date" id="f-start">
+          </div>
+
+          <!-- End Date -->
+          <div class="field">
+            <label>End Date</label>
+            <input type="date" id="f-end">
+          </div>
+
+          <!-- Sum Assured -->
+          <div class="field">
+            <label>Sum Assured (&#x20B9;)</label>
+            <input type="number" id="f-sum-assured" placeholder="500000" min="0">
+          </div>
+
+          <!-- Customer Dropdown -->
+          <div class="field">
+            <label>Customer *</label>
+            <select id="f-cust"></select>
+          </div>
+
+          <!-- Policy Type Dropdown -->
+          <div class="field">
+            <label>Policy Type *</label>
+            <select id="f-type"></select>
+          </div>
+
+          <!-- Premium -->
+          <div class="field">
+            <label>Premium (&#x20B9;) *</label>
+            <input type="number" id="f-premium" placeholder="12000" min="0">
+            <small id="f-premium-hint" style="color:#64748b;font-size:12px">Fill sum assured, customer &amp; type to auto-calculate.</small>
+          </div>
+
+          <!-- Agent Dropdown -->
+          <div class="field">
+            <label>Agent</label>
+            <select id="f-agent"></select>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+        <button class="btn btn-gray" onclick="closeModal('modal')">Cancel</button>
+        <button class="btn btn-primary" onclick="savePolicy(this)">Save Policy</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast"></div>
+
+  <!-- Scripts -->
+  <script src="../../js/common.js"></script>
+  <script src="../../js/admin/policies.js"></script>
+
+</body>
+</html>

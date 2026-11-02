@@ -1,0 +1,286 @@
+/* Main page layout */
+.page {
+  margin-top: 64px; /* space for fixed navbar */
+  padding: 28px 32px; /* inner spacing */
+  min-height: calc(100vh - 64px); /* full screen height minus navbar */
+}
+
+
+/* Header section (title + button) */
+.page-header {
+  display: flex; /* horizontal layout */
+  align-items: center; /* vertical center */
+  justify-content: space-between; /* space between title and button */
+  margin-bottom: 24px;
+}
+
+
+/* Page title */
+.page-header-left h1 {
+  font-size: 22px;
+  font-weight: 800; /* bold */
+  color: #0f172a;
+  letter-spacing: -0.4px; /* tighter spacing for modern look */
+}
+
+/* Page subtitle */
+.page-header-left p {
+  font-size: 13px;
+  color: #94a3b8; /* light gray */
+  margin-top: 3px;
+}
+
+
+/* SUMMARY CARDS */
+.summary-row {
+  display: flex; /* row layout */
+  gap: 14px; /* spacing between cards */
+  flex-wrap: wrap; /* responsive wrap */
+  margin-bottom: 22px;
+}
+
+/* Individual summary card */
+.sum-box {
+  background: white;
+  border-radius: 12px;
+  padding: 16px 22px;
+  border: 1px solid #e2e8f0;
+  min-width: 150px;
+  flex: 1; /* equal width */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04); /* soft shadow */
+}
+
+/* Summary number */
+.sum-box h3 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+/* Summary label */
+.sum-box p {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: 3px;
+}
+
+
+/* CARD (container for tables/content) */
+.card {
+  background: white;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  overflow: hidden; /* prevents overflow */
+}
+
+
+/* FILTER BAR */
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  background: #fafafa;
+  border-bottom: 1px solid #f1f5f9;
+  flex-wrap: wrap; /* responsive */
+}
+
+/* Dropdown styling */
+.bar select {
+  padding: 8px 12px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  outline: none;
+  background: white;
+  color: #1e293b;
+}
+
+/* Focus effect */
+.bar select:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+}
+
+
+/* TABLE WRAPPER (scroll on small screens) */
+.table-wrap {
+  overflow-x: auto;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Table headers */
+th {
+  background: #f8fafc;
+  padding: 11px 16px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase; /* uppercase headings */
+  color: #044fb8;
+  border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+/* Table cells */
+td {
+  padding: 14px 16px;
+  font-size: 13px;
+  color: #475569;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
+}
+
+/* Remove border from last row */
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* Hover effect */
+tbody tr:hover td {
+  background: #f8faff;
+}
+
+
+/* MODAL OVERLAY */
+.overlay {
+  display: none; /* hidden by default */
+  position: fixed;
+  inset: 0; /* full screen */
+  background: rgba(15,23,42,0.6); /* dark background */
+  z-index: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Show modal */
+.overlay.show {
+  display: flex;
+}
+
+
+/* MODAL BOX */
+.modal {
+  background: white;
+  border-radius: 16px;
+  width: 540px;
+  max-width: 95%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.25);
+
+  /* animation for smooth popup */
+  animation: modalPop 0.22s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+
+/* MODAL ANIMATION */
+@keyframes modalPop {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+
+/* Modal header */
+.modal-header {
+  padding: 22px 26px 18px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.modal-header h3 {
+  font-size: 17px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+
+/* Modal body */
+.modal-body {
+  padding: 22px 26px;
+}
+
+
+/* Modal footer */
+.modal-footer {
+  padding: 16px 26px;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+
+/* FORM LAYOUT (2 column grid) */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Form field */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+/* Label */
+.field label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+/* Input & select */
+.field input,
+.field select {
+  padding: 10px 13px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 9px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #1e293b;
+  outline: none;
+  width: 100%;
+  background: white;
+}
+
+/* Focus effect */
+.field input:focus,
+.field select:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.12);
+}
+
+
+/* TOAST NOTIFICATION */
+#toast {
+  position: fixed;
+  bottom: 26px;
+  right: 26px;
+  padding: 13px 22px;
+  border-radius: 11px;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  display: none; /* hidden initially */
+  z-index: 9999;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}

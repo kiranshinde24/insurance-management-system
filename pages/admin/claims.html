@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claims | Insurance</title>
+
+  <link rel="stylesheet" href="../../css/claims.css">
+  <link rel="stylesheet" href="../../css/common.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <a class="nav-logo" href="dashboard.html">
+      <div class="nav-logo-icon">IN</div>
+      <span class="nav-logo-text">In<span>Surance</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="customers.html">Customers</a>
+      <a href="agents.html">Agents</a>
+      <a href="policy-types.html">Policy Types</a>
+      <a href="policies.html">Policies</a>
+      <a href="payments.html">Payments</a>
+      <a href="claims.html" class="active">Claims</a>
+    </div>
+    <div class="nav-right">
+      <button id="themeToggle" class="btn-theme-toggle" aria-label="Toggle Dark/Light Theme">Light</button>
+      <div class="nav-user">
+        <div class="nav-avatar">AD</div>
+        <span>Admin</span>
+      </div>
+      <button onclick="logout()" class="btn-logout">Logout</button>
+    </div>
+  </nav>
+
+  <div class="page">
+
+    <div class="page-header">
+      <div class="page-header-left">
+        <h1>Claims</h1>
+        <p>Review claim requests and enter approved amounts</p>
+      </div>
+    </div>
+
+    <div class="summary-row" id="summary-row"></div>
+
+    <div class="card">
+      <div class="bar">
+        <select id="filter-status" onchange="currentPage = 0; loadTable()">
+          <option value="">All Status</option>
+          <option>Pending</option>
+          <option>Completed</option>
+        </select>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Date</th>
+              <th>Policy No</th>
+              <th>Customer</th>
+              <th>Requested</th>
+              <th>Approved</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+
+      <!-- Pagination -->
+      <div class="bar" style="justify-content:flex-end;align-items:center;gap:10px">
+        <span id="page-info" style="font-size:13px;color:#64748b"></span>
+        <button class="btn btn-sm btn-gray" id="prev-page" onclick="changePage(-1)">‹ Prev</button>
+        <button class="btn btn-sm btn-gray" id="next-page" onclick="changePage(1)">Next ›</button>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- ===== CLAIM DETAIL MODAL ===== -->
+  <div class="overlay" id="claim-modal" style="display:none" onclick="closeModalOutside(event)">
+    <div class="modal claim-detail-modal">
+
+      <div class="modal-header">
+        <h3>Claim Details</h3>
+      </div>
+
+      <div class="modal-body claim-modal-body">
+
+        <!-- LEFT COLUMN: all details -->
+        <div class="claim-modal-left">
+
+          <div class="detail-section-title">Policy & Customer</div>
+          <div class="detail-grid">
+            <div class="detail-box">
+              <span class="detail-label">Customer</span>
+              <span class="detail-value" id="d-customer"></span>
+            </div>
+            <div class="detail-box">
+              <span class="detail-label">Policy Number</span>
+              <span class="detail-value" id="d-polno"></span>
+            </div>
+            <div class="detail-box">
+              <span class="detail-label">Policy Type</span>
+              <span class="detail-value" id="d-poltype"></span>
+            </div>
+            <div class="detail-box">
+              <span class="detail-label">Agent</span>
+              <span class="detail-value" id="d-agent"></span>
+            </div>
+            <div class="detail-box">
+              <span class="detail-label">Claim Date</span>
+              <span class="detail-value" id="d-date"></span>
+            </div>
+            <div class="detail-box">
+              <span class="detail-label">Requested Amount</span>
+              <span class="detail-value" id="d-amount"></span>
+            </div>
+          </div>
+
+          <div class="detail-box" style="margin-top:12px">
+            <span class="detail-label">Description</span>
+            <span class="detail-value" id="d-description" style="white-space:pre-wrap;font-weight:400;color:#334155;font-size:13px;line-height:1.6"></span>
+          </div>
+
+          <!-- AI Fraud Risk Score -->
+          <div class="detail-box" id="d-risk-box" style="margin-top:12px">
+            <span class="detail-label">AI Fraud Risk Score</span>
+            <div id="d-risk-content" style="margin-top:6px">
+              <span style="color:#94a3b8;font-size:13px">Loading risk score…</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: document + approve -->
+        <div class="claim-modal-right">
+
+          <!-- Document -->
+          <div class="detail-section-title">Supporting Document</div>
+          <div id="d-doc-wrap">
+            <p id="d-no-doc" style="font-size:13px;color:#94a3b8">No document uploaded.</p>
+            <button id="d-view-doc-btn" class="btn btn-gray" style="display:none" onclick="openDocViewer()">
+              📎 View Document
+            </button>
+          </div>
+
+          <div style="margin-top:20px">
+            <!-- Pending: show input -->
+            <div id="d-approve-wrap">
+              <div class="detail-section-title">Approve Claim</div>
+              <input
+                type="number"
+                id="d-approved-input"
+                min="0"
+                placeholder="Enter approved amount (₹)"
+                style="width:100%;padding:11px 14px;border:1.5px solid #e2e8f0;border-radius:9px;font-size:14px;outline:none;font-family:'Inter',sans-serif;margin-top:4px"
+              >
+            </div>
+
+            <!-- Completed: show green message -->
+            <div id="d-completed-msg" style="display:none;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:9px;padding:14px 16px;color:#16a34a;font-weight:600;font-size:14px;margin-top:4px">
+              ✓ Claim completed<br>
+              <span style="font-size:13px;font-weight:400">Approved Amount: <b id="d-approved-show"></b></span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-gray" onclick="document.getElementById('claim-modal').style.display='none'">Close</button>
+        <button class="btn btn-del" id="d-reject-btn" onclick="rejectClaim(this)">Reject</button>
+        <button class="btn btn-primary" id="d-save-btn" onclick="saveApproved(this)">Save & Approve</button>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ===== DOCUMENT VIEWER MODAL ===== -->
+  <div class="overlay" id="doc-viewer-modal" style="display:none" onclick="closeDocViewer(event)">
+    <div class="modal" style="max-width:680px;width:94%">
+
+      <div class="modal-header">
+        <h3 id="doc-viewer-title">Document</h3>
+      </div>
+
+      <div class="modal-body" style="padding:20px" id="doc-viewer-body"></div>
+
+      <div class="modal-footer">
+        <button class="btn btn-gray" onclick="document.getElementById('doc-viewer-modal').style.display='none'">Close</button>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div id="toast"></div>
+
+  <script src="../../js/common.js"></script>
+  <script src="../../js/admin/claims.js"></script>
+</body>
+</html>

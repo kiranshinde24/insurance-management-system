@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Meta Information -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Insurance</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../css/login.css">
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <div class="login-page">
+    <div class="login-card">
+
+      <!-- Brand -->
+      <div class="login-brand">
+        <div class="login-brand-icon">IN</div>
+        <span class="login-brand-name">In<span>surance</span></span>
+      </div>
+
+      <h2>Welcome back</h2>
+      <p class="sub">Sign in to your Insurance account</p>
+
+      <!-- Error -->
+      <div class="login-error" id="error-msg">
+        Wrong username or password. Please try again.
+      </div>
+
+      <!-- Username -->
+      <div class="login-field">
+        <label>Username</label>
+        <input type="text" id="username" placeholder="admin">
+      </div>
+
+      <!-- Password with Toggle -->
+      <div class="login-field" style="position:relative;">
+        <label>Password</label>
+
+        <input type="password" id="password" placeholder="••••••••">
+
+        <!-- Toggle Button -->
+        <button
+          type="button"
+          id="toggleIcon"
+          class="password-toggle-btn"
+          onclick="togglePassword()"
+          aria-label="Show password">
+          <i class="fa fa-eye"></i>
+        </button>
+      </div>
+
+      <!-- Login Button -->
+      <button class="login-btn" onclick="doLogin(this)">Sign In</button>
+
+      <p class="sub" style="text-align:center;margin-top:16px;">
+        Don't have an account? <a href="customer/register.html">Register</a>
+      </p>
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../js/common.js"></script>
+  <script src="../js/login.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,825 @@
+/* Import Google Font (Inter for modern UI) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+
+/* Reset default browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* ensures padding doesn't increase width */
+}
+
+
+/* Base body styling */
+body {
+  font-family: 'Inter', sans-serif; /* clean modern font */
+  background: #f1f5f9; /* light gray background */
+  font-size: 14px;
+  color: #1e293b; /* dark text */
+}
+
+
+/* Page layout container */
+.page {
+  margin-top: 64px; /* space for fixed navbar */
+  padding: 28px 32px;
+  min-height: calc(100vh - 64px); /* full screen minus navbar */
+}
+
+
+/* Header section (title + button) */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* left text + right button */
+  margin-bottom: 24px;
+}
+
+
+/* Page title */
+.page-header-left h1 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+
+/* Subtitle text */
+.page-header-left p {
+  font-size: 13px;
+  color: #94a3b8;
+  margin-top: 3px;
+}
+
+
+/* Common button styles */
+.btn {
+  padding: 9px 18px;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px; /* space between icon & text */
+}
+
+
+/* Primary button (blue gradient) */
+.btn-primary {
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  color: white;
+}
+
+
+/* Secondary button (gray) */
+.btn-gray {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+
+/* Navbar (top fixed bar) */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 64px;
+  background: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  z-index: 200; /* stays above everything */
+  box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+}
+
+
+/* Logo container */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+
+/* Logo icon (IN box) */
+.nav-logo-icon {
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 800;
+  font-size: 15px;
+  box-shadow: 0 3px 10px rgba(99,102,241,0.5);
+}
+
+
+/* Logo text */
+.nav-logo-text {
+  font-size: 19px;
+  font-weight: 800;
+  color: white;
+  letter-spacing: -0.5px;
+}
+
+
+/* Highlight part of logo text */
+.nav-logo-text span {
+  color: #60a5fa;
+}
+
+
+/* Navigation links container */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+
+/* Individual nav links */
+.nav-links a {
+  padding: 8px 14px;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+
+/* Hover effect */
+.nav-links a:hover {
+  background: rgba(255,255,255,0.08);
+  color: white;
+}
+
+
+/* Active page link */
+.nav-links a.active {
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+}
+
+
+/* Right side (user + logout) */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+
+/* User info section */
+.nav-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.7);
+  font-size: 13px;
+}
+
+
+/* Avatar circle */
+.nav-avatar {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+/* Logout button */
+.btn-logout {
+  padding: 7px 15px;
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.8);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 7px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.15s;
+}
+
+
+/* Logout hover effect */
+.btn-logout:hover {
+  background: rgba(220,38,38,0.3);
+  color: white;
+  border-color: #dc2626;
+}
+
+/* Panel form and table styling */
+.form-card {
+  background: white;
+  border-radius: 18px;
+  border: 1px solid #e2e8f0;
+  padding: 24px;
+  box-shadow: 0 16px 40px rgba(15,23,42,0.05);
+  margin-bottom: 24px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+@media (max-width: 900px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  color: #475569;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 14px;
+  color: #0f172a;
+  background: white;
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.page-header h1 {
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.page-header p {
+  color: #64748b;
+  margin-top: 6px;
+}
+
+.actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  color: white;
+  white-space: nowrap;
+}
+
+.b-green { background: #16a34a; }
+.b-red { background: #dc2626; }
+.b-amber { background: #f59e0b; }
+.b-gray { background: #475569; }
+
+.btn-sm {
+  padding: 8px 14px;
+  font-size: 12px;
+  border-radius: 8px;
+}
+
+.btn-edit { background: #2563eb; color: white; border: none; }
+.btn-del { background: #dc2626; color: white; border: none; }
+
+.alert-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #334155;
+  border-radius: 16px;
+  padding: 18px 20px;
+  margin-bottom: 22px;
+}
+
+#toast {
+  display: none;
+  min-width: 220px;
+  max-width: 320px;
+  word-break: break-word;
+}
+
+/* ============================================================
+   LOADING STATES — skeleton rows, stat placeholders, button spinner
+   ============================================================ */
+@keyframes skeleton-shimmer {
+  0%   { background-position: -200px 0; }
+  100% { background-position: calc(200px + 100%) 0; }
+}
+
+.skeleton {
+  display: inline-block;
+  height: 14px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 37%, #e2e8f0 63%);
+  background-size: 400px 100%;
+  animation: skeleton-shimmer 1.4s ease-in-out infinite;
+  vertical-align: middle;
+}
+
+.skeleton-row td {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.skeleton-text {
+  width: 70%;
+  max-width: 120px;
+}
+
+.skeleton-badge {
+  width: 60px;
+  height: 20px;
+  border-radius: 999px;
+}
+
+.skeleton-btn {
+  width: 56px;
+  height: 26px;
+  border-radius: 8px;
+}
+
+.stat-skeleton {
+  width: 48px;
+  height: 20px;
+  border-radius: 6px;
+}
+
+body.dark .skeleton {
+  background: linear-gradient(90deg, #1e293b 25%, #273449 37%, #1e293b 63%);
+  background-size: 400px 100%;
+}
+
+/* Spinner shown inside a button while an async action is in flight */
+@keyframes btn-spin {
+  to { transform: rotate(360deg); }
+}
+
+.btn-spinner {
+  width: 13px;
+  height: 13px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  animation: btn-spin 0.6s linear infinite;
+  margin-right: 2px;
+}
+
+.btn-gray .btn-spinner,
+.login-btn .btn-spinner {
+  border: 2px solid rgba(37,99,235,0.25);
+  border-top-color: #2563eb;
+}
+
+.btn[disabled] {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+/* ============================================================
+   FIELD VALIDATION — consistent invalid-field highlighting,
+   used alongside toasts across every form in the app
+   ============================================================ */
+.form-group input.input-error,
+.form-group select.input-error,
+.form-group textarea.input-error,
+.login-field input.input-error {
+  border-color: #dc2626 !important;
+  box-shadow: 0 0 0 3px rgba(220,38,38,0.12);
+}
+
+.field-error-text {
+  color: #dc2626;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 4px;
+  display: none;
+}
+
+.field-error-text.show {
+  display: block;
+}
+
+body.dark .form-group input.input-error,
+body.dark .form-group select.input-error,
+body.dark .form-group textarea.input-error,
+body.dark .login-field input.input-error {
+  box-shadow: 0 0 0 3px rgba(220,38,38,0.25);
+}
+/* DARK MODE USING .dark CLASS */
+body.dark {
+  background: #0f172a;
+  color: #f1f5f9;
+}
+
+body.dark .page {
+  background: #0f172a;
+}
+body.dark .stat-card,
+body.dark .card,
+body.dark .form-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+body.dark th {
+  background: #162032;
+  color: #60a5fa;
+  border-color: #334155;
+}
+
+body.dark td {
+  color: #cbd5e1;
+  border-color: #243044;
+}
+
+body.dark tbody tr:hover td {
+  background: #1a2f4a;
+}
+
+body.dark .form-group input,
+body.dark .form-group select,
+body.dark .form-group textarea {
+  background: #0f172a;
+  color: #f1f5f9;
+  border-color: #334155;
+}
+body.dark .card-header h3,
+body.dark .stat-card h3 {
+  color: #f1f5f9;
+}
+
+/* ============================================================
+   DARK MODE — full coverage
+   The page-specific CSS files (agents.css, customers.css, payments.css,
+   policies.css, policy-types.css, dashboard.css) style modals, filter
+   bars, summary boxes, and page headers using their own light-only
+   colors. These rules make every one of those dark-aware from a single
+   place, so every admin/agent/customer page picks it up automatically.
+   ============================================================ */
+
+/* Page headers (title + subtitle) */
+body.dark .page-header-left h1,
+body.dark .page-header h1 {
+  color: #f1f5f9;
+}
+
+body.dark .page-header-left p,
+body.dark .page-header p {
+  color: #94a3b8;
+}
+
+/* Modals (used by agents/customers/payments/policies/policy-types/claims) */
+body.dark .modal {
+  background: #1e293b;
+  border: 1px solid #334155;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.55);
+}
+
+body.dark .modal-header,
+body.dark .modal-footer {
+  border-color: #334155;
+}
+
+body.dark .modal-header h3 {
+  color: #f1f5f9;
+}
+
+body.dark .overlay {
+  background: rgba(0,0,0,0.7);
+}
+
+/* Modal/inline form fields — several pages use `.field` instead of
+   `.form-group`, so it needs the same dark treatment */
+body.dark .field label {
+  color: #94a3b8;
+}
+
+body.dark .field input,
+body.dark .field select,
+body.dark .field textarea {
+  background: #0f172a;
+  color: #f1f5f9;
+  border-color: #334155;
+}
+
+body.dark .field input::placeholder {
+  color: #64748b;
+}
+
+body.dark .field input:focus,
+body.dark .field select:focus,
+body.dark .field textarea:focus {
+  border-color: #3b82f6;
+}
+
+/* Filter/search bars (customers, payments, policies, claims) */
+body.dark .bar {
+  background: #162032;
+  border-color: #334155;
+}
+
+body.dark .bar input,
+body.dark .bar select {
+  background: #0f172a;
+  color: #f1f5f9;
+  border-color: #334155;
+}
+
+body.dark .bar input::placeholder {
+  color: #64748b;
+}
+
+/* Summary boxes (payments, claims) */
+body.dark .sum-box {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+body.dark .sum-box h3 {
+  color: #f1f5f9;
+}
+
+body.dark .sum-box p {
+  color: #94a3b8;
+}
+
+/* ============================================================
+   EMPTY STATES — shown in a table body when a list comes back empty.
+   Pairs with the shimmering skeleton used while loading, so a table
+   never looks broken whether it's loading, empty, or populated.
+   ============================================================ */
+.empty-state-cell {
+  padding: 44px 20px !important;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #94a3b8;
+}
+
+.empty-state i {
+  font-size: 26px;
+  color: #cbd5e1;
+}
+
+.empty-state span {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+body.dark .empty-state {
+  color: #64748b;
+}
+
+body.dark .empty-state i {
+  color: #334155;
+}
+
+/* ============================================================
+   MICRO-INTERACTIONS — subtle hover feedback on buttons and cards
+   ============================================================ */
+.btn {
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease, background 0.15s ease;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.btn-primary:hover:not(:disabled) {
+  box-shadow: 0 6px 18px rgba(37,99,235,0.35);
+}
+
+.btn-gray:hover:not(:disabled) {
+  background: #e2e8f0;
+}
+
+.btn-edit:hover:not(:disabled) {
+  background: #dbeafe;
+}
+
+.btn-del:hover:not(:disabled) {
+  background: #fee2e2;
+}
+
+.stat-card,
+.sum-box,
+.card {
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.stat-card:hover {
+  box-shadow: 0 10px 28px rgba(15,23,42,0.08);
+  transform: translateY(-2px);
+}
+
+body.dark .stat-card:hover {
+  box-shadow: 0 10px 28px rgba(0,0,0,0.4);
+}
+
+/* Theme toggle button styling */
+.btn-theme-toggle {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  width: 50px;
+  height: 34px;
+  cursor: pointer;
+  color: white;
+  font-size: 12px;
+  transition: all 0.3s;
+}
+
+body.dark .btn-theme-toggle {
+  border-color: #60a5fa;
+  color: #f1f5f9;
+}
+
+/* ============================================================
+   RESPONSIVE — mobile & tablet breakpoints
+   Applies across every page since common.css loads last everywhere.
+   ============================================================ */
+
+/* Tablet: stat cards / dashboard charts reflow before things get tight */
+@media (max-width: 1024px) {
+  .stat-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .charts-row {
+    grid-template-columns: 1fr;
+  }
+  .chart-card-wide {
+    grid-column: 1;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .page {
+    padding: 18px 16px;
+  }
+
+  /* Navbar: keep the 64px bar, but let the link list scroll horizontally
+     instead of overflowing or wrapping the whole bar */
+  .navbar {
+    padding: 0 14px;
+    gap: 10px;
+  }
+
+  .nav-logo-text {
+    display: none; /* keep just the icon to save space */
+  }
+
+  .nav-links {
+    flex: 1;
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-right {
+    gap: 8px;
+  }
+
+  .nav-user span,
+  .nav-user > div:not(.nav-avatar),
+  .nav-right > span {
+    display: none; /* keep the avatar, drop the name label */
+  }
+
+  .btn-logout {
+    padding: 7px 10px;
+  }
+
+  /* Banner */
+  .banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+    padding: 24px 20px;
+  }
+
+  .banner-stats {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 22px;
+  }
+
+  /* Stat cards */
+  .stat-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .stat-card {
+    padding: 16px 18px;
+  }
+
+  .stat-card h3 {
+    font-size: 24px;
+  }
+
+  /* Shared 2-column form grids used in agents/claims/customers/payments/policies modals */
+  .form-row {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Dashboard charts stack, and get a shorter, thumb-friendlier height */
+  .charts-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .chart-body {
+    height: 200px;
+    padding: 14px 14px 16px;
+  }
+
+  .chart-card-wide .chart-body {
+    height: 220px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .stat-row {
+    grid-template-columns: 1fr;
+  }
+
+  .banner-text h2 {
+    font-size: 19px;
+  }
+
+  .bstat .bval {
+    font-size: 24px;
+  }
+
+  .bstat .blbl {
+    font-size: 10.5px;
+  }
+
+  .nav-avatar {
+    width: 28px;
+    height: 28px;
+  }
+}

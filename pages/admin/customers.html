@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Meta Information -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customers | Insurance</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../../css/customers.css">
+  <link rel="stylesheet" href="../../css/common.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+
+    <!-- Logo -->
+    <a class="nav-logo" href="dashboard.html">
+      <div class="nav-logo-icon">IN</div>
+      <span class="nav-logo-text">In<span>Surance</span></span>
+    </a>
+
+    <!-- Navigation Links -->
+    <div class="nav-links">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="customers.html" class="active">Customers</a>
+      <a href="agents.html">Agents</a>
+      <a href="policy-types.html">Policy Types</a>
+      <a href="policies.html">Policies</a>
+      <a href="payments.html">Payments</a>
+      <a href="claims.html">Claims</a>
+    </div>
+
+    <!-- User Info and Logout -->
+    <div class="nav-right">
+      <button id="themeToggle" class="btn-theme-toggle" aria-label="Toggle Dark/Light Theme">Light</button>
+      <div class="nav-user">
+        <div class="nav-avatar">AD</div>
+        <div>Admin</div>
+      </div>
+      <button onclick="logout()" class="btn-logout">Logout</button>
+    </div>
+
+  </nav>
+
+  <!-- Main Page -->
+  <div class="page">
+
+    <!-- Page Header -->
+    <div class="page-header">
+      <div class="page-header-left">
+        <h1> Customers</h1>
+        <p>Manage all insured customer profiles</p>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="bar">
+        <input 
+          type="text" 
+          id="search" 
+          placeholder="Search name, PAN or phone..." 
+          oninput="currentPage = 0; loadTable()"
+        >
+      </div>
+    </div>
+
+    <!-- Table Section -->
+    <div class="table-wrap">
+        <table>
+
+          <!-- Table Head -->
+          <thead>
+            <tr>
+              <th>Customer ID</th>
+              <th>Name</th>
+              <th>Date of Birth</th>
+              <th>PAN</th>
+              <th>Phone</th>
+              <th>Email</th>
+              <th>City</th>
+            </tr>
+          </thead>
+
+          <!-- Dynamic Table Body -->
+          <tbody id="tbody"></tbody>
+
+        </table>
+      </div>
+
+      <!-- Pagination -->
+      <div class="bar" style="justify-content:flex-end;align-items:center;gap:10px">
+        <span id="page-info" style="font-size:13px;color:#64748b"></span>
+        <button class="btn btn-sm btn-gray" id="prev-page" onclick="changePage(-1)">‹ Prev</button>
+        <button class="btn btn-sm btn-gray" id="next-page" onclick="changePage(1)">Next ›</button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Modal for Add/Edit Customer -->
+  <div class="overlay" id="modal">
+    <div class="modal">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h3 id="modal-title">Add Customer</h3>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body">
+
+        <!-- Hidden ID for edit -->
+        <input type="hidden" id="edit-id">
+
+        <div class="form-row">
+
+          <!-- Full Name -->
+          <div class="field">
+            <label>Full Name *</label>
+            <input type="text" id="f-name" placeholder="Ankit Joshi">
+          </div>
+
+          <!-- Date of Birth -->
+          <div class="field">
+            <label>Date of Birth *</label>
+            <input type="date" id="f-dob">
+          </div>
+
+          <!-- PAN -->
+          <div class="field">
+            <label>PAN Number</label>
+            <input type="text" id="f-pan" placeholder="ABCDE1234F" maxlength="10">
+          </div>
+
+          <!-- Phone -->
+          <div class="field">
+            <label>Phone</label>
+            <input type="text" id="f-phone" placeholder="9876543210">
+          </div>
+
+          <!-- Email -->
+          <div class="field">
+            <label>Email</label>
+            <input type="email" id="f-email" placeholder="email@example.com">
+          </div>
+
+          <!-- City -->
+          <div class="field">
+            <label>City</label>
+            <input type="text" id="f-city" placeholder="Mumbai">
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+        <button class="btn btn-gray" onclick="closeModal('modal')">Cancel</button>
+        <button class="btn btn-primary" onclick="saveCustomer(this)">Save Customer</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast"></div>
+
+  <!-- Scripts -->
+  <script src="../../js/common.js"></script>
+  <script src="../../js/admin/customers.js"></script>
+
+</body>
+</html>

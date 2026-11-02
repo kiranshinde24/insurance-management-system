@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Policy | Agent Panel</title>
+
+  <link rel="stylesheet" href="../../css/dashboard.css">
+  <link rel="stylesheet" href="../../css/common.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <a class="nav-logo" href="dashboard.html">
+      <div class="nav-logo-icon">IN</div>
+      <span class="nav-logo-text">In<span>Surance</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="customers.html">Customers</a>
+      <a href="create-policy.html" class="active">Create Policy</a>
+      <a href="my-policies.html">My Policies</a>
+      <a href="commission.html">Commission</a>
+    </div>
+    <div class="nav-right">
+      <button id="themeToggle" class="btn-theme-toggle" aria-label="Toggle Dark/Light Theme">Light</button>
+      <div class="nav-user">
+        <div class="nav-avatar" id="nav-avatar">AG</div>
+        <span id="nav-username">Agent</span>
+      </div>
+      <button class="btn-logout" onclick="logout()">Logout</button>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div class="page-header">
+      <div>
+        <h1>Create Policy</h1>
+        <p>Issue a new policy for your customer and track it from your agent panel.</p>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Customer</label>
+          <select id="customer-select"></select>
+        </div>
+        <div class="form-group">
+          <label>Policy Type</label>
+          <select id="type-select"></select>
+        </div>
+        <div class="form-group">
+          <label>Sum Assured (&#x20B9;)</label>
+          <input type="number" id="sum-assured" placeholder="e.g. 500000">
+        </div>
+        <div class="form-group">
+          <label>Start Date</label>
+          <input type="date" id="start-date">
+        </div>
+        <div class="form-group">
+          <label>End Date</label>
+          <input type="date" id="end-date">
+        </div>
+        <div class="form-group">
+          <label>Premium</label>
+          <input type="number" id="premium" placeholder="Auto-calculated from sum assured, type & age">
+          <small id="premium-hint" style="color:#64748b;font-size:12px">Fill in customer, type, sum assured and dates to auto-calculate.</small>
+        </div>
+      </div>
+      <button class="btn btn-primary" onclick="createPolicy(this)">Save Policy</button>
+    </div>
+  </div>
+
+  <script src="../../js/common.js"></script>
+  <script src="../../js/agent/agent-create-policy.js"></script>
+</body>
+</html>
