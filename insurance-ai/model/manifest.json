@@ -1,0 +1,48 @@
+{
+  "numeric_features": [
+    "claim_amount",
+    "sum_assured",
+    "annual_premium",
+    "customer_age",
+    "days_since_policy_start",
+    "policy_term_days",
+    "pct_term_elapsed",
+    "num_prior_claims",
+    "days_since_last_claim",
+    "policy_risk_factor",
+    "claim_to_sum_ratio",
+    "description_length",
+    "has_suspicious_phrase"
+  ],
+  "categorical_features": [
+    "policy_type"
+  ],
+  "policy_type_categories": [
+    "Health",
+    "Home",
+    "Term Life",
+    "Travel",
+    "Vehicle"
+  ],
+  "feature_importances": {
+    "claim_to_sum_ratio": 0.20911977995931497,
+    "pct_term_elapsed": 0.11641631464185485,
+    "claim_amount": 0.11152943902508576,
+    "days_since_policy_start": 0.11062462229309533,
+    "description_length": 0.07517938136774599,
+    "num_prior_claims": 0.06607332607016105,
+    "has_suspicious_phrase": 0.061425471160826695,
+    "annual_premium": 0.06034042221002743,
+    "days_since_last_claim": 0.05217153156841046,
+    "customer_age": 0.05124683021740196,
+    "sum_assured": 0.024759729219338535,
+    "policy_risk_factor": 0.02117709642782769,
+    "policy_term_days": 0.01536600068958677,
+    "policy_type_Vehicle": 0.0052887877643353325,
+    "policy_type_Travel": 0.005080257713285929,
+    "policy_type_Home": 0.004862201247645191,
+    "policy_type_Health": 0.004680040865756603,
+    "policy_type_Term Life": 0.004658767558299509
+  },
+  "test_roc_auc": 0.7646581836327345
+}
