@@ -30,7 +30,45 @@ An end-to-end Insurance Policy Management System built using **Java, Spring Boot
 - Integrated with the Spring Boot backend through REST APIs.
 
 **Model information:** The initial model is trained on 8,000 synthetic insurance claim records. Its recorded test ROC-AUC is approximately 0.765. This is an experimental baseline, not a measure of real-world fraud detection performance.
+## Application Screenshots
 
+### Authentication
+| Login | Registration |
+|---|---|
+| ![Login](screenshots/login.PNG) | ![Registration](screenshots/register.PNG) |
+
+### Admin Dashboard
+![Admin Dashboard](screenshots/Admin_Dashboard.PNG)
+
+![Admin Dashboard Overview](screenshots/admin_dashboard_1.PNG)
+
+| Customer Details | Claim Requests |
+|---|---|
+| ![Customer Details](screenshots/Admin_customer_details_page.PNG) | ![Claim Requests](screenshots/admin_claim_requested_page.PNG) |
+
+![Claim Details with AI Fraud Risk](screenshots/admin_claim_details_with_Ai%20Fraud_risk.PNG)
+
+![Payments History](screenshots/admin_payments_history_page.PNG)
+
+### Agent Dashboard
+![Agent Dashboard](screenshots/Agent_Dashboard.PNG)
+
+| Agent Customers | Agent Commission |
+|---|---|
+| ![Agent Customers](screenshots/Agent_Customer_page.PNG) | ![Agent Commission](screenshots/Agent_Commision_page.PNG) |
+
+### Customer Dashboard
+![Customer Dashboard](screenshots/Customer_Dashboard.PNG)
+
+| Available Policies | Policy Details |
+|---|---|
+| ![Customer Policies](screenshots/Customer_policies_pages.PNG) | ![Policy Details](screenshots/Cusotmer_policy_Details.PNG) |
+
+| Payment History | Claim Request |
+|---|---|
+| ![Customer Payment](screenshots/Csutomer_paymetn_page.PNG) | ![Claim Request](screenshots/Customer_claim_requesting_page.PNG) |
+
+![Claim Request Status](screenshots/Cusoomer_claim_request_status.PNG)
 ## Technology Stack
 
 | Component | Technologies |
